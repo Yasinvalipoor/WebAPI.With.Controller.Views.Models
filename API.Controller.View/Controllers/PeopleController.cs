@@ -1,25 +1,20 @@
 ﻿using API.Controller.View.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controller.View.Controllers
+
+public class PeopleController : Controller
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    private readonly WebApiControllerViewContext _dbcontext;
 
-    public class PeopleController : ControllerBase
+    public PeopleController(WebApiControllerViewContext Dbcontext)
     {
-        private readonly WebApiControllerViewContext dbcontext;
+        _dbcontext = Dbcontext;
+    }
 
-        public PeopleController(WebApiControllerViewContext Dbcontext)
-        {
-            dbcontext = Dbcontext;
-        }
-
-        [HttpGet("GetAllPeople")]
-        public IActionResult GetAllPeople()
-        {
-            return Ok(dbcontext.people.ToList());
-        }
+    [HttpGet]
+    public IActionResult GetAllPeople()
+    {
+        return View(_dbcontext.people.ToList());
     }
 }
+
