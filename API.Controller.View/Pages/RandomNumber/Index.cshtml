@@ -1,0 +1,12 @@
+﻿@page "/PrintNumber/Index"
+@model API.Controller.View.Pages.RandomNumber.IndexModel
+@{
+}
+
+<div>
+    <h1>Print Number in URL</h1>
+    @foreach (int i in Model.numbers)
+    {
+        <span>@i</span>
+    }
+</div>

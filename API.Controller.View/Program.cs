@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<WebApiControllerViewContext>(c => c.UseSqlServer(builder.Configuration.GetConnectionString("PeopleDbCnn")));
 
@@ -25,5 +26,5 @@ app.UseAuthorization();
 
 app.MapControllerRoute("Default", "{Controller=People}/{Action=GetAllPeople}/{id?}");
 //app.MapDefaultControllerRoute(); ==> "Default", "{Controller=Home}/{Action=Index}/{id?}"
-
+app.MapRazorPages();
 app.Run();
