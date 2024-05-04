@@ -16,9 +16,9 @@ namespace API.Controller.View.Pages.RandomNumber
             }
         }
 
-        public IActionResult Test(bool b=false)
+        public IActionResult Test(int b)
         {
-            if (b)
+            if (b==1)
             {
                 return BadRequest();
             }
